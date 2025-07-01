@@ -1,24 +1,29 @@
-import { Slot, Stack } from 'expo-router'
+import { Stack } from 'expo-router'
 import { StyleSheet, Text, useColorScheme, View } from 'react-native'
+import { Colors } from "../constants/Colors"
+import { StatusBar } from 'expo-status-bar'
 
 
 const RootLayout = () => {
   const colorScheme = useColorScheme()
-
+  const theme = Colors[colorScheme] ?? Colors.dark
 
   return (
+    <>
+      <StatusBar value='auto' />
+      <Stack screenOptions={{
+          headerStyle: {backgroundColor:theme.navBackground},
+          headerTintColor: theme.title,
+      }}>
+          <Stack.Screen name='(auth)' options={{ headerShown: false }}/>
 
-    <Stack screenOptions={{
-        headerStyle: {backgroundColor:'#ddd'},
-        headerTintColor: '#333'
-    }}>
-        <Stack.Screen name='index' options={{title: 'Home'}}/>
-        <Stack.Screen name='logging' options={{title: 'Workout'}}/>
-        <Stack.Screen name='macros' options={{title: 'Macros'}}/>
-        <Stack.Screen name='sleep' options={{title: 'Sleep'}}/>
-        <Stack.Screen name='profile' options={{title: 'Profile'}}/>
-    </Stack>
-
+          <Stack.Screen name='index' options={{title: 'Home'}}/>
+          <Stack.Screen name='logging' options={{title: 'Workout'}}/>
+          <Stack.Screen name='macros' options={{title: 'Macros'}}/>
+          <Stack.Screen name='sleep' options={{title: 'Sleep'}}/>
+          <Stack.Screen name='profile' options={{title: 'Profile'}}/>
+      </Stack>
+    </>
   )
 }
 

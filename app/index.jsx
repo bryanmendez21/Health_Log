@@ -1,24 +1,50 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, } from 'react-native'
 import { Link } from 'expo-router'
 
 import Logo from '../assets/img/hp.png'
+// themed components
+import ThemedView from '../components/ThemedView'
+//import ThemedLogo from '../components/ThemedLogo'
+// <ThemedLogo style={styles.img} />
+import Spacer from '../components/Spacer'
+import ThemedText from '../components/ThemedText'
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Image source={Logo} style={styles.img} />
+    <ThemedView style={styles.container}>
+   
 
-      <Text style={styles.title}>Home</Text>
+      <ThemedText style={styles.title} title ={true}>
+        Home
+      </ThemedText>
 
-      <Text style={{marginTop: 10, marginBottom:30 }}>
+      <ThemedText style={{marginTop: 10, marginBottom:30 }}>
         tracking 
-      </Text>
+      </ThemedText>
 
-      <Link href='/logging' >log</Link>
-      <Link href='/macros' >macros</Link>
-      <Link href='/sleep' >sleep</Link>
-      <Link href='/profile' >profile</Link>
-    </View>
+      <Link href='/logging' >
+        <ThemedText>Log</ThemedText>
+      </Link>
+      <Spacer height={20} />
+      <Link href='/macros' >
+        <ThemedText>Macros</ThemedText>
+      </Link>
+      <Spacer height={20} /> 
+      <Link href='/sleep' >
+      <ThemedText>Sleep</ThemedText>
+      </Link>
+      <Spacer height={20} />
+      <Link href='/profile' >
+      <ThemedText>Profile</ThemedText>
+      </Link>
+
+      <Spacer height={100} />
+      <Link href="/login"> 
+          <ThemedText> 
+              Login 
+          </ThemedText>    
+      </Link>
+    </ThemedView>
   )
 }
 
@@ -37,7 +63,8 @@ const styles = StyleSheet.create({
     fontSize: 18
 
   },
-  img: {
+  link: {
     marginVertical: 10,
-  },
+    borderBottomWidth: 1
+  }
 })

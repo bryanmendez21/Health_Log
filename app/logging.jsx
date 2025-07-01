@@ -1,17 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, } from 'react-native'
 import { Link } from 'expo-router'
+
+// themed components
+import ThemedView from '../components/ThemedView'
+import Spacer from '../components/Spacer'
+import ThemedText from '../components/ThemedText'
 
 
 const logging = () => {
   return (
-    <View style={styles.container} >
-      <Text style={styles.title} >logging </Text>
+    <ThemedView style={styles.container} >
+      <ThemedText style={styles.title} title ={true} >logging </ThemedText>
 
-      <Link href='/' >home</Link>
-      <Link href='/macros' >macros</Link>
-      <Link href='/sleep' >sleep</Link>
-      <Link href='/profile' >profile</Link>
-    </View>
+      <Link href='/' >
+        <ThemedText>Home</ThemedText>
+      </Link>
+      <Spacer height={20} />
+      <Link href='/macros' >
+        <ThemedText>Macros</ThemedText>
+      </Link>
+      <Spacer height={20} /> 
+      <Link href='/sleep' >
+      <ThemedText>Sleep</ThemedText>
+      </Link>
+      <Spacer height={20} />
+      <Link href='/profile' >
+      <ThemedText>Profile</ThemedText>
+      </Link>
+    </ThemedView>
 
   )
 }
@@ -19,7 +35,7 @@ const logging = () => {
 export default logging
 
 const styles = StyleSheet.create({
-      container: {
+  container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
