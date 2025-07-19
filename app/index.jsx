@@ -8,7 +8,7 @@ import ThemedView from '../components/ThemedView'
 // <ThemedLogo style={styles.img} />
 import Spacer from '../components/Spacer'
 import ThemedText from '../components/ThemedText'
-
+  
 const Home = () => {
   return (
     <ThemedView style={styles.container}>
@@ -21,7 +21,7 @@ const Home = () => {
       <ThemedText style={{marginTop: 10, marginBottom:30 }}>
         tracking 
       </ThemedText>
-
+    
       <Link href='/logging' >
         <ThemedText>Log</ThemedText>
       </Link>
@@ -44,7 +44,7 @@ const Home = () => {
               Login 
           </ThemedText>    
       </Link>
-    </ThemedView>
+    </ThemedView> 
   )
 }
 
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderBottomWidth: 1
   }
-})
+}) 
