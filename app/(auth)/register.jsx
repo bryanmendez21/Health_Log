@@ -1,6 +1,8 @@
 import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { Link } from 'expo-router'
+import { Colors } from '../../constants/Colors'
 import { useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 
 // themed components
 import ThemedView from '../../components/ThemedView'
@@ -12,10 +14,19 @@ import ThemedTextInput from '../../components/ThemedTextInput'
 const register = () => {
   const[email, setEmail] = useState ('')
   const[password, setPassword] = useState ('')
+  const [error, setError] = useState(null)
 
-  const handleSubmit = () => (
-    console.log('register form submitted', email, password)
-  )
+  const { register } = useUser()
+
+  const handleSubmit = async() => {
+    setError(null)
+
+    try {
+      await register(email, password)
+    } catch (error) {
+      setError(error.message)
+    }
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -46,6 +57,8 @@ const register = () => {
           <Text style={{ color: '#f2f2f2 '}}> Register </Text>
         </ThemedButton>
 
+        <Spacer />
+        {error && <Text style={styles.error}>{error}</Text>}
 
         <Spacer height={100}/>
         <Link href="/login"> 
@@ -74,4 +87,13 @@ const styles = StyleSheet.create({
     fontSize: 18
 
   },
+  error:{
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#f5c1c8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
+  }
 })
