@@ -1,4 +1,4 @@
-import { StyleSheet, } from 'react-native'
+import { StyleSheet, View,Text, ScrollView} from 'react-native'
 import { Link } from 'expo-router'
 
 // themed components
@@ -9,11 +9,15 @@ import ThemedText from '../../components/ThemedText'
 
 const logging = () => {
   return (
-    <ThemedView style={styles.container} >
+    <ThemedView style={styles.container}  safe={true}>
 
-      <ThemedText style={styles.title} title ={true} >log </ThemedText>
+      <ThemedText style={styles.title} title ={true} >Log </ThemedText>
       <ThemedText> log your workouts here </ThemedText>
-
+    <View style={styles.container}>
+      <Text style={styles.header}>Log Workout</Text>
+      <Text>[Workout logging UI here]</Text>
+    </View>
+  
     </ThemedView>
 
   )
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold', 
-    fontSize: 18
+    fontSize: 22
 
   },
 })

@@ -1,4 +1,4 @@
-import { StyleSheet, } from 'react-native';
+import { StyleSheet, View,Text, ScrollView} from 'react-native';
 import { Link } from 'expo-router';
 // themed components
 import ThemedView from '../../components/ThemedView'
@@ -7,23 +7,32 @@ import ThemedText from '../../components/ThemedText'
 
 const Home = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safe={true}>
    
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.header}>Your Weekly Progress</Text>
 
-      <ThemedText style={styles.title} title ={true}>
-        Home
-      </ThemedText>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Workout Volume</Text>
+        <Text>12,350 lbs lifted this week 💪</Text>
+      </View>
 
-      <ThemedText style={{marginTop: 10, marginBottom:30 }}>
-        track your workouts,marcos and sleep 
-      </ThemedText>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Today's Macros</Text>
+        <Text>Protein: 120g | Carbs: 180g | Fat: 70g | Calories: 2100</Text>
+      </View>
 
-      <Spacer height={100} />
-      <Link href="/login"> 
-          <ThemedText> 
-              Login 
-          </ThemedText>    
-      </Link>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Today's Sleep</Text>
+        <Text>7 hrs 30 min 😴</Text>
+      </View>
+
+      <View style={styles.calendar}>
+        <Text style={styles.cardTitle}>Workout Calendar</Text>
+        <Text>[Calendar Placeholder Here]</Text>
+      </View>
+    </ScrollView>
+
     </ThemedView> 
   )
 }
@@ -40,11 +49,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold', 
-    fontSize: 18
+    fontSize: 22
 
   },
-  link: {
-    marginVertical: 10,
-    borderBottomWidth: 1
-  }
+  cardTitle: {
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  calendar: {
+    backgroundColor: '#e8f0ff',
+    padding: 16,
+    borderRadius: 12,
+  },
 }) 
