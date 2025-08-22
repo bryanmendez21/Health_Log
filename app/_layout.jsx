@@ -3,6 +3,7 @@ import { StyleSheet, Text, useColorScheme, View } from 'react-native'
 import { Colors } from "../constants/Colors"
 import { StatusBar } from 'expo-status-bar'
 import { UserProvider } from '../contexts/UserContext'
+import { HealthProvider } from '../contexts/HealthContext'
 
 
 const RootLayout = () => {
@@ -11,19 +12,16 @@ const RootLayout = () => {
 
   return (
     <UserProvider>
-      <StatusBar value='auto' />
-      <Stack screenOptions={{
-          headerStyle: {backgroundColor:theme.navBackground},
-          headerTintColor: theme.title,
-      }}>
-          <Stack.Screen name='(auth)' options={{ headerShown: false }}/>
-          <Stack.Screen name='(dashboard)' options={{ headerShown: false }}/>
-        {/*  <Stack.Screen name='index' options={{title: 'Home'}}/>
-          <Stack.Screen name='logging' options={{title: 'Workout'}}/>
-          <Stack.Screen name='macros' options={{title: 'Macros'}}/>
-          <Stack.Screen name='sleep' options={{title: 'Sleep'}}/>
-          <Stack.Screen name='profile' options={{title: 'Profile'}}/> */}
-      </Stack>
+      <HealthProvider>
+        <StatusBar value='auto' />
+        <Stack screenOptions={{
+            headerStyle: {backgroundColor:theme.navBackground},
+            headerTintColor: theme.title,
+        }}>
+            <Stack.Screen name='(auth)' options={{ headerShown: false }}/>
+            <Stack.Screen name='(dashboard)' options={{ headerShown: false }}/>
+        </Stack>
+      </HealthProvider>
     </UserProvider>
   )
 }

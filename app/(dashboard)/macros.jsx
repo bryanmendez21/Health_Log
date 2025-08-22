@@ -5,39 +5,42 @@ import { Link } from 'expo-router'
 import ThemedView from '../../components/ThemedView'
 import Spacer from '../../components/Spacer'
 import ThemedText from '../../components/ThemedText'
+import ThemedHeader from '../../components/ThemedHeader'
 
 const macros = () => {
   return (
+
     <ThemedView style={styles.container}  safe={true}>
+      <ThemedHeader heightPercent={50}>
+          <ThemedText style={styles.header}>Today's Macros</ThemedText>
+          <ThemedView style={styles.row}>
+            <ThemedText style={styles.label}>Protein</ThemedText>
+            <ThemedText>130g</ThemedText>
+          </ThemedView>
+          <View style={styles.row}>
+            <Text style={styles.label}>Carbs</Text>
+            <Text>200g</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Fat</Text>
+            <Text>80g</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Saturated Fat</Text>
+            <Text>20g</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Calories</Text>
+            <Text>2300 kcal</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Fiber</Text>
+            <Text>30g</Text>
+          </View>
+      </ThemedHeader>
       <ThemedText style={styles.title} title ={true} >Macros </ThemedText>
       <ThemedText> Keep track of what you eat </ThemedText>
-    <ScrollView contentContainerStyle={styles.container}>
-      <ThemedText style={styles.header}>Today's Macros</ThemedText>
-      <ThemedView style={styles.row}>
-        <ThemedText style={styles.label}>Protein</ThemedText>
-        <ThemedText>130g</ThemedText>
-      </ThemedView>
-      <View style={styles.row}>
-        <Text style={styles.label}>Carbs</Text>
-        <Text>200g</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Fat</Text>
-        <Text>80g</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Saturated Fat</Text>
-        <Text>20g</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Calories</Text>
-        <Text>2300 kcal</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Fiber</Text>
-        <Text>30g</Text>
-      </View>
-    </ScrollView>
+
     </ThemedView>
   )
 }

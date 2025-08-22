@@ -2,6 +2,7 @@ import { StyleSheet,Text,View, Image, TouchableOpacity,TextInput,Button} from 'r
 import { useUser } from '../../hooks/useUser'
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../../constants/Colors';
 
 
 // themed components
@@ -103,7 +104,7 @@ const profile = () => {
 
       {/* logout */}
       <View style={styles.logoutContainer}>
-        <ThemedButton onPress={logout}>
+        <ThemedButton onPress={logout} style= {{ backgroundColor: Colors.warning }}>
           <Text style={{color: '#f2f2f2'}}>Logout</Text>
         </ThemedButton>
       </View>
