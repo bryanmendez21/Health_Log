@@ -10,7 +10,7 @@ import ThemedView from '../../components/ThemedView'
 import Spacer from '../../components/Spacer'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
-
+import ThemedCard from '../../components/ThemedCard';
 
 // Conversion functions
 const convertCmToFeetInches = (cm) => {
@@ -101,11 +101,16 @@ const profile = () => {
           Switch to {useMetric ? 'US Units' : 'Metric'}
         </Text>
       </TouchableOpacity>
+      <Spacer/>
+      
+      <ThemedCard>
+
+      </ThemedCard>
 
       {/* logout */}
       <View style={styles.logoutContainer}>
         <ThemedButton onPress={logout} style= {{ backgroundColor: Colors.warning }}>
-          <Text style={{color: '#f2f2f2'}}>Logout</Text>
+          <Text style={{color: '#f0f0f0ff', fontSize: '20',fontWeight:'500'}}>Logout</Text>
         </ThemedButton>
       </View>
     </ThemedView>

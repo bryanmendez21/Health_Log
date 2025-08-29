@@ -11,9 +11,10 @@ import Spacer from '../../components/Spacer'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedTextInput from '../../components/ThemedTextInput'
+import ThemedCard from '../../components/ThemedCard'
+import ThemedHeader from '../../components/ThemedHeader'
 
 const Sleep = () => {
-
   const [sleepTime, setSleepTime] = useState(null);
   const [wakeTime, setWakeTime] = useState(null);
   const [hoursSlept, setHoursSlept] = useState("");
@@ -50,70 +51,82 @@ const Sleep = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container} safe={true} >
-        <ThemedText style={styles.title} title ={true} >Sleep Log</ThemedText>
+        <ThemedHeader>
+          <View style={styles.headerRow}>   
+            <ThemedText style={styles.title} title ={true} >Sleep Log</ThemedText>
+          </View>
+        </ThemedHeader>
+        <Spacer height = {10}/>
+          {/* Grey Box for Inputs */}
+          <ThemedCard style={styles.card}>
 
-          {/* Sleep Time Picker */}
-          <Button
-            title={sleepTime ? sleepTime.toLocaleString() : "Select Sleep Time"}
-            onPress={() => setShowSleepPicker(true)}
-          />
-          {showSleepPicker && (
-            <DateTimePicker
-              value={sleepTime || new Date()}
-              mode="datetime"
-              is24Hour={true}
-              display="default"
-              onChange={(event, selectedDate) => {
-                setShowSleepPicker(Platform.OS === 'ios'); // keep open on iOS
-                if (selectedDate) setSleepTime(selectedDate);
-              }}
+            <Spacer height={10} />
+            {/* Sleep Time Picker */}
+            <Button
+              title={sleepTime ? sleepTime.toLocaleString() : "Select Sleep Time"}
+              onPress={() => setShowSleepPicker(true)}
             />
-          )}
-          <Spacer/>
+            {showSleepPicker && (
+              <DateTimePicker
+                value={sleepTime || new Date()}
+                mode="datetime"
+                is24Hour={true}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowSleepPicker(Platform.OS === 'ios'); // keep open on iOS
+                  if (selectedDate) setSleepTime(selectedDate);
+                }}
+              />
+            )}
+            <Spacer/>
 
-
-          {/* Wake Time Picker */}
-          <Button
-            title={wakeTime ? wakeTime.toLocaleString() : "Select Wake Time"}
-            onPress={() => setShowWakePicker(true)}
-          />
-          {showWakePicker && (
-            <DateTimePicker
-              value={wakeTime || new Date()}
-              mode="datetime"
-              is24Hour={true}
-              display="default"
-              onChange={(event, selectedDate) => {
-                setShowWakePicker(Platform.OS === 'ios');
-                if (selectedDate) setWakeTime(selectedDate);
-              }}
+            {/* Wake Time Picker */}
+            <Button
+              title={wakeTime ? wakeTime.toLocaleString() : "Select Wake Time"}
+              onPress={() => setShowWakePicker(true)}
             />
-          )}
-          <Spacer/>
+            {showWakePicker && (
+              <DateTimePicker
+                value={wakeTime || new Date()}
+                mode="datetime"
+                is24Hour={true}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowWakePicker(Platform.OS === 'ios');
+                  if (selectedDate) setWakeTime(selectedDate);
+                }}
+              />
+            )}
 
+            <Spacer/>
 
-          <ThemedTextInput
-            style={styles.input}
-            placeholder="Hours Slept"
-            keyboardType="numeric"
-            value={hoursSlept}
-            onChangeText={setHoursSlept}
-          />
-          <Spacer/>
+            {/* Hours Slept Input */}
+            <ThemedTextInput
+              style={styles.input}
+              placeholder="Hours Slept"
+              keyboardType="numeric"
+              value={hoursSlept}
+              onChangeText={setHoursSlept}
+            />
+            <Spacer/>
 
+            {/* Submit Button */}
+            <ThemedButton onPress={handleSubmit} disabled={loading}>
+              <Text style={{color: '#fff'}}>
+                {loading ? "saving..." : "Log Sleep"}
+              </Text>
+            </ThemedButton>
+          </ThemedCard>  
 
-          <ThemedButton onPress={handleSubmit} disabled={loading}>
-            <Text style={{color: '#fff'}}>
-              {loading ? "saving..." : "Log Sleep"}
-            </Text>
-          </ThemedButton>
-          <Spacer/>
+          <Spacer height = {5}/>
 
+          {/* Graph Placeholder */}
+          <ThemedCard>
+            <View style={styles.graph}>
+              <ThemedText>[Weekly sleep graph placeholder]</ThemedText>
+            </View>
+        </ThemedCard>
 
-        <View style={styles.graph}>
-          <ThemedText>[Weekly sleep graph placeholder]</ThemedText>
-        </View>
-      
       </ThemedView>
     </TouchableWithoutFeedback>
   )
@@ -130,8 +143,6 @@ const styles = StyleSheet.create({
     title: {
     fontWeight: 'bold',
     fontSize: 22,
-    marginBottom: 60,
-    textAlign: 'center',
   },
   input: {
     padding: 20,
@@ -146,5 +157,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+    headerRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingTop: 5,
+    paddingBottom: 5,
   },
 })

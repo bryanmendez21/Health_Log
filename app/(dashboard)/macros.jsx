@@ -11,7 +11,6 @@ const macros = () => {
   return (
 
     <ThemedView style={styles.container}  safe={true}>
-      <ThemedHeader heightPercent={50}>
           <ThemedText style={styles.header}>Today's Macros</ThemedText>
           <ThemedView style={styles.row}>
             <ThemedText style={styles.label}>Protein</ThemedText>
@@ -37,7 +36,6 @@ const macros = () => {
             <Text style={styles.label}>Fiber</Text>
             <Text>30g</Text>
           </View>
-      </ThemedHeader>
       <ThemedText style={styles.title} title ={true} >Macros </ThemedText>
       <ThemedText> Keep track of what you eat </ThemedText>
 

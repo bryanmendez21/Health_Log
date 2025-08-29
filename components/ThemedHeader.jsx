@@ -11,10 +11,11 @@ const ThemedHeader = ({ style, safe = false, heightPercent = 10, ...props }) => 
   // Calculate height based on percentage of screen height
   const headerStyle = {
     backgroundColor: theme.header,
-    height: `${heightPercent}%`,
-    width: '100',
-    paddingTop:inserts.top,
-    paddingBottom: inserts.bottom,
+    width: '100%',
+    paddingBottom: 20, 
+    paddingTop: 20,  
+    justifyContent: "center",  // centers your row
+    paddingHorizontal: 12,
   }
 
   return (

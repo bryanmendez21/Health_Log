@@ -8,7 +8,7 @@ export const Colors = {
     dark:{
         text:'#b0b0b0',
         title: '#969292ff',
-        header: '#065186ff', 
+        header: '#141414ff', 
         background: '#0f0f10',
         navBackground: '#1a1a1d',
         iconColor: '#8c8c8cff',
@@ -26,3 +26,5 @@ export const Colors = {
         uiBackground: '#d6d5e1',
     },
 }
+//#00b4d8 cyan color
+//#cc475a red color
